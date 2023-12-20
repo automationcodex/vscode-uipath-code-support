@@ -1,0 +1,72 @@
+{
+  "name": "uipath-code-support",
+  "displayName": "UiPath Code Support",
+  "description": "Facilitates development of UiPath Coded Workflows by creating a fully-featured dummy C# project for VS Code IntelliSense and navigation.",
+  "publisher": "automationcodex",
+  "icon": "images/icon.png",
+  "license": "MIT",
+  "version": "1.1.2",
+  "engines": {
+    "vscode": "^1.84.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/automationcodex/vscode-uipath-code-support"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "uipath-code-support.init",
+        "title": "Initialize UiPath Code Support for this project"
+      },
+      {
+        "command": "uipath-code-support.update",
+        "title": "Update UiPath Code Support for this project"
+      },
+      {
+        "command": "uipath-code-support.remove",
+        "title": "Remove UiPath Code Support from this project"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.3",
+    "@types/node": "18.x",
+    "@types/vscode": "^1.84.0",
+    "@types/winreg": "^1.2.36",
+    "@typescript-eslint/eslint-plugin": "^6.9.0",
+    "@typescript-eslint/parser": "^6.9.0",
+    "@vscode/test-electron": "^2.3.6",
+    "eslint": "^8.52.0",
+    "glob": "^10.3.10",
+    "mocha": "^10.2.0",
+    "ts-loader": "^9.5.0",
+    "typescript": "^5.2.2",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "fast-xml-parser": "^4.3.2",
+    "node": "^21.2.0",
+    "winreg": "^1.2.5"
+  },
+  "extensionDependencies": [
+    "ms-dotnettools.csharp"
+  ]
+}

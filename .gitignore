@@ -1,0 +1,40 @@
+# System files #
+################
+.DS_Store
+Thumbs.db
+
+# Dependency directories #
+##########################
+node_modules/
+out/
+
+# VSCode directories #
+######################
+.vscode/
+.vscode-test/
+
+# Built output #
+###############
+dist/
+*.tsbuildinfo
+.vsix
+
+# Coverage directory #
+######################
+coverage/
+
+# NPM #
+#######
+npm-debug.log
+yarn-error.log
+yarn.lock
+package-lock.json
+
+# Environment Variables #
+#########################
+.env
+.env.local
+
+# Debug Log #
+#############
+*.log
