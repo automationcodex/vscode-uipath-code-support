@@ -6,7 +6,8 @@ export default function getProjectDependencies(uiPathProjectFile : UiPathProject
         return {
             name,
             // version format [1.0.0] => 1.0.0
-            version: version.substring(1, version.length - 1),
+            // version format 1.0.0 => 1.0.0
+            version: version.replace('[', '').replace(']', '')
         };
     });
 }

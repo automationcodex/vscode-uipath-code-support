@@ -16,6 +16,7 @@ import fs from 'fs';
 import os from 'os';
 import checkForExistingBuildPropsFile from './functions/check-for-existing-build-props-file';
 import createBuildPropsFile from './functions/create-build-props-file';
+import getSettings from './functions/get-settings';
 
 
 // Activates the extension with the logic encapsulated in distinct functions.
@@ -86,9 +87,6 @@ async function update() {
 async function generateProjectFiles(workspaceFolder: vscode.WorkspaceFolder) {
 
 	const installPath = await getUiPathInstallPath();
-	if (!installPath) {
-		throw new Error('UiPath installation path not found');
-	}
 
 	ensureCSharpExtensionIsInstalled();
 
@@ -103,7 +101,7 @@ async function generateProjectFiles(workspaceFolder: vscode.WorkspaceFolder) {
 	const buildFolder = createProjectBuildFolder(projectFileData.projectId, config.appDataFolderName);
 
 	createProjectFile(
-		config.targetFramework,
+		getSettings().get(config.settingsNames.targetFramework, config.targetFrameworkDefaultValue),
 		packagePath,
 		dependencies,
 		assemblies,

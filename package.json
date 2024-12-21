@@ -5,7 +5,7 @@
   "publisher": "automationcodex",
   "icon": "images/icon.png",
   "license": "MIT",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "engines": {
     "vscode": "^1.84.0"
   },
@@ -32,10 +32,33 @@
         "command": "uipath-code-support.remove",
         "title": "Remove UiPath Code Support from this project"
       }
-    ]
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "UiPath Code Support",
+      "properties": {
+        "uipath-code-support.useCustomUipathInstallationFolder": {
+          "type": "boolean",
+          "default": false,
+          "description": "If true, the extension will use the folder specified in the 'uipathInstallationFolder' setting to locate the UiPath installation folder. If false, the extension will look in the registry to find it."
+        },
+        "uipath-code-support.uipathInstallationFolder": {
+          "type": "string",
+          "default": "",
+          "description": "The path to the UiPath installation folder. This setting is only used if 'useCustomUipathInstallationFolder' is set to true."
+        },
+        "uipath-code-support.targetFramework": {
+          "type": "string",
+          "default": "net8.0-windows7.0",
+          "description": "The target framework for the dummy C# project."
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run package",
+    "vscode:package": "vsce package",
+    "vscode:publish": "vsce publish",
     "compile": "webpack",
     "watch": "webpack --watch",
     "package": "webpack --mode production --devtool hidden-source-map",

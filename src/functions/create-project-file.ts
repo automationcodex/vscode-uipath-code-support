@@ -24,8 +24,11 @@ export default function createProjectFile(
             ItemGroup: {
                 Compile: [
                     {
-                        '@_Include': ".local/install/CodedWorkflow.cs",
-                    }
+                        '@_Include': ".local/**/*.cs",
+                    },
+                    {
+                        '@_Include': ".codedworkflows/**/*.cs",
+                    },
                 ],
                 Reference: assemblies.map(assembly => ({
                     '@_Include': path.basename(assembly.name, '.dll'),

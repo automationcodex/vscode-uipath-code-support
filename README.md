@@ -9,6 +9,7 @@
 - **Navigation**: Enables 'Go to Definition', 'Find All References', and 'Peek Definition' features for easy navigation and understanding of the code structure within your workflows.
 - **C# Project Simulation**: Generates a dummy `.csproj` file with references to the necessary dependencies so that VS Code can provide language features typically available for C# projects.
 - **Dependency Management**: Reflects UiPath project dependencies within the C# project file to streamline the development cycle.
+- **Custom Configuration**: New settings allow customization of the UiPath installation folder and target framework.
 
 ## License
 
@@ -16,7 +17,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Publisher
 
-The extension is published form **Automation CodeX** on the Visual Studio Code Marketplace.
+The extension is published by **Automation CodeX** on the Visual Studio Code Marketplace.
 
 ## Source Code Repository
 
@@ -78,6 +79,25 @@ By using these commands, you can manage the C# project file that enables enhance
 - **Update UiPath Code Support for this project**: Updates UiPath code support by updating the custom `.csproj` file.
 - **Remove UiPath Code Support from this project**: Removes UiPath code support by removing the custom `.csproj` file.
 
+## Configuration Settings
+
+The following settings allow you to configure certain aspects of the UiPath Code Support extension:
+
+- **`uipath-code-support.useCustomUipathInstallationFolder`**: 
+  - **Type**: `boolean`
+  - **Default**: `false`
+  - **Description**: If true, the extension will use the folder specified in the 'uipathInstallationFolder' setting to locate the UiPath installation folder. If false, the extension will look in the registry to find it.
+
+- **`uipath-code-support.uipathInstallationFolder`**: 
+  - **Type**: `string`
+  - **Default**: `""`
+  - **Description**: The path to the UiPath installation folder. This setting is only used if 'useCustomUipathInstallationFolder' is set to true.
+
+- **`uipath-code-support.targetFramework`**: 
+  - **Type**: `string`
+  - **Default**: `"net8.0-windows7.0"`
+  - **Description**: The target framework for the dummy C# project, which now defaults to `net8.0-windows7.0` to align with updated UiPath versions.
+
 ## Release Notes
 
 ### 1.0.0
@@ -112,6 +132,12 @@ By using these commands, you can manage the C# project file that enables enhance
 - `Directory.Build.props` file now created alongside `.csproj`
 - Warnings are suppressed in build logs.
 
+### 1.2.0
+
+- Added configuration settings for specifying custom UiPath installation folder and target framework.
+- Better error handling for errors related to missing UiPath installation folder.
+- Default target framework updated to net8.0-windows7.0.
+- Enhanced dynamic mapping for `.cs` files in the `.csproj` file with more flexible inclusions.
 ---
 
 We hope you enjoy using **UiPath Code Support** to improve your UiPath development process within Visual Studio Code!
